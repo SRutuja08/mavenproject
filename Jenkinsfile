@@ -1,27 +1,15 @@
 pipeline
-{agent any
+{
+agent any
 stages
 {
 stage('scm checkout')
-{ steps { git branch: 'master', url: 'https://github.com/prakashk0301/mavenproject.git' }}
+{steps {git branch: 'master', url: 'https://github.com/SRutuja08/mavenproject.git'}}
 
-
-stage('compile the job')    //validate then compile
-{steps { withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_HOME', maven: 'MVN_HOME', mavenSettingsConfig: '', traceability: true) {
-    sh 'mvn compile'
-} }}
-
-stage('execute unit test framework')    
-{steps { withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_HOME', maven: 'MVN_HOME', mavenSettingsConfig: '', traceability: true) {
-    sh 'mvn test'
-} }}
-
-
-stage('build the code')    
-{steps { withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_HOME', maven: 'MVN_HOME', mavenSettingsConfig: '', traceability: true) {
-    sh 'mvn clean -B -DskipTests package'
-} }}
-
+stage('validate the job')
+{steps {withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_path', maven: 'maven_path', mavenSettingsConfig: '', traceability: true) {
+    sh 'mvn validate'
+}}}
 
 }
-}
+
