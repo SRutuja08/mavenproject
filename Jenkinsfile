@@ -23,7 +23,7 @@ stage('build the code')
 }}}
 
 stage('deploy to tomcat')
-{steps {sshagent(['RDevCICD']){sh 'scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@172.31.26.81/usr/share/tomcat/webapps'
+{steps {sshagent(['RDevCICD']){sh 'scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@172.31.26.81/usr/share/tomcat/webapp'
 }}}
 
 }
